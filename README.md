@@ -1,6 +1,6 @@
 # list-builtin-packages
 
-create a map of golang's builtin package paths except internal prefied packages.
+create a map of golang's builtin package paths except internal prefixed packages.
 
 output:
 
