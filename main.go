@@ -3,6 +3,7 @@ package main
 import (
 	"os"
 	"sort"
+	"strings"
 	"text/template"
 
 	"golang.org/x/tools/go/packages"
@@ -34,8 +35,10 @@ func init() {
 		panic(err)
 	}
 
-	builtinPackages = make([]string, len(pkgs))
-	for i, pkg := range pkgs {
-		builtinPackages[i] = pkg.PkgPath
+	for _, pkg := range pkgs {
+		p := pkg.PkgPath
+		if !strings.Contains(p, "internal/") {
+			builtinPackages = append(builtinPackages, p)
+		}
 	}
 }
